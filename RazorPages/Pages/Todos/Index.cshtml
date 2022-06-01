@@ -1,0 +1,29 @@
+﻿@page
+@model RazorPages.Pages.Todos.IndexModel
+@{ ViewData["Title"] = "Todos";
+}
+
+@{ 
+    if (Model.Message != null)
+    {
+        <div class="alert alert-success">
+            @Model.Message
+        </div>
+    }
+}
+
+<a asp-page="/Todos/New">New Todo</a>
+
+<form method="post" class="form-group">
+    @for (int i = 0; i < Model.TodoItems.Count; i++)
+    {
+        <div class="d-flex align-items-baseline mb-2">
+            <input type="hidden" asp-for="TodoItems[i].Id" />
+            <input class="mr-2" type="checkbox" asp-for="TodoItems[i].IsDone" />
+            <input class="form-control" type="text" asp-for="TodoItems[i].Title" />
+            <span class="text-danger" asp-validation-for="TodoItems[0].Title"></span>
+        </div>
+    }
+    <button class="btn btn-primary" asp-page-handler="save">Save All</button>
+    <button class="btn btn-danger" asp-page-handler="delete">Delete Completed Tasks</button>
+</form>

@@ -1,0 +1,15 @@
+﻿@page
+@model RazorPages.Pages.Todos.NewModel
+@{
+    ViewData["Title"] = "New Todo";
+}
+
+<h1>New Todo</h1>
+<form method="post">
+    <div class="form-group">
+        <label asp-for="NewTodo.Title"></label>
+        <input class="form-control" type="text" asp-for="NewTodo.Title" />
+        <span asp-validation-for="NewTodo.Title"></span>
+    </div>
+    <button class="btn btn-primary">Save</button>
+</form>
