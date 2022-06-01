@@ -22,7 +22,7 @@ namespace RazorPages.Pages.Todos
 
         public void OnGet()
         {
-            TodoItems = _db.ToDoItems.ToList();
+            TodoItems = _db.ToDoItems.OrderBy(x => x.IsDone).ToList();
         }
 
         public IActionResult OnPostSave()
